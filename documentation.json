@@ -1,0 +1,248 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Aplikasi Pemilihan Ketua Himpunan dan Penampung Aspirasi",
+    "description": "API untuk mengelola pemilihan ketua himpunan dan penampungan aspirasi mahasiswa jurusan Sistem Informasi.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.sisteminformasi.com/api/v1"
+    }
+  ],
+  "paths": {
+    "/candidates": {
+      "get": {
+        "summary": "Daftar semua kandidat ketua himpunan",
+        "responses": {
+          "200": {
+            "description": "Daftar kandidat",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Candidate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Menambahkan kandidat baru",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCandidate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Kandidat berhasil ditambahkan",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Candidate"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/candidates/{candidateId}": {
+      "get": {
+        "summary": "Mendapatkan detail kandidat berdasarkan ID",
+        "parameters": [
+          {
+            "name": "candidateId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Detail kandidat",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Candidate"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Kandidat tidak ditemukan"
+          }
+        }
+      }
+    },
+    "/votes": {
+      "post": {
+        "summary": "Memasukkan suara untuk kandidat",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Vote"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Suara berhasil dimasukkan"
+          }
+        }
+      }
+    },
+    "/aspirations": {
+      "get": {
+        "summary": "Daftar semua aspirasi yang telah diterima",
+        "responses": {
+          "200": {
+            "description": "Daftar aspirasi",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Aspiration"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Mengirimkan aspirasi",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewAspiration"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Aspirasi berhasil dikirim"
+          }
+        }
+      }
+    },
+    "/aspirations/{aspirationId}/forward": {
+      "post": {
+        "summary": "Meneruskan aspirasi ke prodi",
+        "parameters": [
+          {
+            "name": "aspirationId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Aspirasi berhasil diteruskan ke prodi"
+          },
+          "404": {
+            "description": "Aspirasi tidak ditemukan"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Candidate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "vision": {
+            "type": "string"
+          },
+          "mission": {
+            "type": "string"
+          }
+        }
+      },
+      "NewCandidate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "vision": {
+            "type": "string"
+          },
+          "mission": {
+            "type": "string"
+          }
+        }
+      },
+      "Vote": {
+        "type": "object",
+        "properties": {
+          "candidateId": {
+            "type": "string"
+          },
+          "voterId": {
+            "type": "string"
+          }
+        }
+      },
+      "Aspiration": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "NewAspiration": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
