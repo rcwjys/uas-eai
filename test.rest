@@ -5,6 +5,7 @@ Content-Type: application/json
   "username": "johndoe",
   "user_email": "john.doe@example.com",
   "user_password": "password123",
+  "user_refresh_token": "halo",
   "user_attempt": 1,
   "is_admin": false
 }
