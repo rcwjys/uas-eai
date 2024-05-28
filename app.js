@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { votesRouter } from './src/routes/votesRouter.js';
+import { authRouter } from './src/routes/authRouter.js';
 import { errorHandler } from './src/utils/errorHandler.js';
 
 const app = express();
@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 
-app.use(votesRouter);
+app.use(authRouter);
 
 
 app.use(errorHandler);

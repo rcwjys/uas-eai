@@ -10,8 +10,4 @@ const router = express.Router();
 router.post('/api/v1/users/register', tryCatch(register));
 
 
-
-
-
-
-export { router as votesRouter };
+export { router as authRouter };
