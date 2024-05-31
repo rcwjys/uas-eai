@@ -19,12 +19,13 @@ model User {
 }
 
 model Candidate {
-  candidate_id        String @id @default(uuid())
-  candidate_name      String @unique @db.VarChar(50)
-  candidate_biography String @db.Text
-  candidate_vision    String @db.Text
-  candidate_mission   String @db.Text
-  candidate           Votes?
+  candidate_id        String  @id @default(uuid())
+  candidate_name      String  @unique @db.VarChar(50)
+  candidate_slug      String? @unique
+  candidate_biography String  @db.Text
+  candidate_vision    String  @db.Text
+  candidate_mission   String  @db.Text
+  Votes               Votes?
 }
 
 model Votes {

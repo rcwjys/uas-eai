@@ -1,9 +1,10 @@
   import {z} from 'zod';
-  import {ValidationError} from './error.js';
+  import {ForbiddenError, NotFoundError, ValidationError} from './error.js';
 
   const errorHandler = (err, req, res, next) => {
     if (err instanceof z.ZodError) {
-        res.status(400).json({
+        console.log(err);
+        return res.status(400).json({
           success: false,
           error: 'Validation Failed',
           details: err.errors.map(err => ({
@@ -12,15 +13,31 @@
           })),
         });
     } else if (err instanceof ValidationError) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         error: 'Validation Failed',
         details: {
           message: err.message
         }
       });
+    } else if (err instanceof ForbiddenError) {
+        console.log(err);
+        return res.status(401).json({
+        success: false,
+        error: 'Forbidden Error',
+        details: {
+          message: err.message
+        }
+      });
+    } else if (err instanceof NotFoundError) {
+      console.log(err)
+      return res.status(404).json({
+        success: false,
+        error: 'Not Found',
+      })
     } else {
-      res.status(500).json({
+      console.log(err);
+      return res.status(500).json({
         success: false,
         error: "Internal Server Error",
         details: {

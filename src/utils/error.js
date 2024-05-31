@@ -4,5 +4,16 @@ class ValidationError extends Error {
   }
 }
 
+class ForbiddenError extends Error {
+  constructor(message) {
+    super(message);
+  }
+}
 
-export {ValidationError};
+class NotFoundError extends Error {
+  constructor(message) {
+    super(message);
+  }
+}
+
+export {ValidationError, ForbiddenError, NotFoundError};

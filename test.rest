@@ -2,10 +2,27 @@ POST http://localhost:3000/api/v1/users/register
 Content-Type: application/json
 
 {
-  "username": "johndoe",
-  "user_email": "john.doe@example.com",
-  "user_password": "password123",
-  "user_refresh_token": "halo",
+  "username": "rcwjys",
+  "user_email": "rcwjys@example.com",
+  "user_password": "rcwjys",
   "user_attempt": 1,
   "is_admin": false
 }
+
+### 
+POST http://localhost:3000/api/v1/users/login
+Content-Type: application/json
+
+{
+  "username": "johndoe",
+  "user_password": "password123"
+}
+
+###
+GET http://localhost:3000/api/v1/users/logout
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiam9obmRvZSIsImlhdCI6MTcxNzExODM1MCwiZXhwIjoxNzE3MTIwMTUwfQ.9H7R7GxZU65v7VVOZRXCBghNnS3QLlj2fGUuAESX2C0
+
+
+
+
+

@@ -1,0 +1,30 @@
+###
+GET http://localhost:3000/api/v1/candidates
+
+###
+GET http://localhost:3000/api/v1/candidates/john-doe
+
+###
+POST http://localhost:3000/api/v1/candidates
+Content-Type: application/json
+
+{
+  "candidate_name": "John Doe",
+  "candidate_biography": "John Doe has a rich background in community service and leadership.",
+  "candidate_vision": "To create a more inclusive and prosperous community for all.",
+  "candidate_mission": "To implement policies that promote economic growth, education, and social justice."
+}
+
+###
+PATCH http://localhost:3000/api/v1/candidates/c163d5e2-b4d0-4b97-ae35-549c7a77b766
+Content-Type: application/json
+
+{
+  "candidate_name": "john doe",
+  "candidate_biography": "John Doe has a rich background in community service and leadership.",
+  "candidate_vision": "To create a more inclusive and prosperous community for all.",
+  "candidate_mission": "To implement policies that promote economic growth, education, and social justice."
+}
+
+###
+DELETE http://localhost:3000/api/v1/candidates/c163d5e2-b4d0-4b97-ae35-549c7a77b766
