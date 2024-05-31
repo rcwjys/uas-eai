@@ -16,6 +16,7 @@ model User {
   user_attempt       Int    @default(1)
   user_role          Role   @default(students)
   votes              Votes?
+  aspirations        Aspiration?
 }
 
 model Candidate {
@@ -40,4 +41,25 @@ enum Role {
   students
   himpunan
   lecture
+}
+
+model Aspiration_Address {
+  aspiration_address_id String  @id @default(uuid())
+  aspiration_address    String  @unique
+  aspirations           Aspiration?
+}
+
+model Aspiration {
+  aspiration_id          String             @id @default(uuid())
+  aspiration_status      Status             @default(pending)
+  user_id                String             @unique
+  user                   User               @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  aspiration_address_id  String             @unique
+  aspiration_address     Aspiration_Address @relation(fields: [aspiration_address_id], references: [aspiration_address_id], onDelete: Cascade)
+}
+
+enum Status {
+  pending
+  approved
+  rejected
 }

@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import { votesRouter } from './src/routes/votesRouter.js';
 import { errorHandler } from './src/utils/errorHandler.js';
+import { aspirationAddressRouter } from './src/routes/aspirationAddressRouter.js';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 
 app.use(votesRouter);
+app.use(aspirationAddressRouter);
 
 
 app.use(errorHandler);

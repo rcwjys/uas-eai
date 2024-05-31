@@ -1,0 +1,12 @@
+###
+GET http://localhost:3000/api/v1/aspiration-addresses
+
+###
+curl -X POST http://localhost:3000/api/v1/aspiration-addresses \
+-H "Content-Type: application/json" \
+-d '{"aspiration_address": "Staf"}'
+
+###
+
+GET http://localhost:3000/api/v1/aspiration-addresses/544d086b-bfcc-4566-92bb-edebc387054d
+
