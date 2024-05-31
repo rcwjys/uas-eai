@@ -1,5 +1,5 @@
   import {z} from 'zod';
-  import {ForbiddenError, NotFoundError, ValidationError} from './error.js';
+  import {ForbiddenError,NotFoundError, ValidationError} from './error.js';
 
   const errorHandler = (err, req, res, next) => {
     if (err instanceof z.ZodError) {
@@ -30,12 +30,13 @@
         }
       });
     } else if (err instanceof NotFoundError) {
-      console.log(err)
+      console.log(err);
       return res.status(404).json({
         success: false,
         error: 'Not Found',
+        message: err.message
       })
-    } else {
+    }  else {
       console.log(err);
       return res.status(500).json({
         success: false,

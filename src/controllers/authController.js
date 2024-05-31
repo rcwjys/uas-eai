@@ -1,8 +1,9 @@
 import {z} from 'zod';
 import bcrypt from 'bcrypt';
-import { ForbiddenError, ValidationError } from '../utils/error.js';
+import { ForbiddenError, NotFoundError, ValidationError } from '../utils/error.js';
 import { PrismaClient } from '@prisma/client';
 import { generateRefreshToken, generateToken } from '../utils/generateToken.js';
+import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
@@ -78,13 +79,33 @@ async function login(req, res) {
 
   if (!isPasswordValid) throw new ForbiddenError("username or password wrong");
 
-  const token = await generateToken(userLoggedIn.username, userLoggedIn.user_id);
+  const token =  await generateToken(
+    {
+      username: userLoggedIn.username, 
+      user_id: userLoggedIn.user_id, 
+      user_role: userLoggedIn.user_role,
+    }
+  );
 
-  const refreshToken = await generateRefreshToken({username});
+  const refreshToken = await generateRefreshToken(
+    {
+      username: userLoggedIn.username, 
+      user_id: userLoggedIn.user_id, 
+      user_role: userLoggedIn.user_role
+    }
+  );
 
   await prisma.user.update({
     where: {username},
-    data: {user_refresh_token: refreshToken}
+    data: {
+      user_refresh_token: refreshToken,
+      token_created_at: jwt.verify(token, process.env.TOKEN_SECRET, (err, userPayload) => {
+        return userPayload.iat
+      }),
+      token_expired_at: jwt.verify(token, process.env.TOKEN_SECRET, (err, userPayload) => {
+        return userPayload.exp
+      })
+    }
   });
 
   res.status(200).json({
@@ -94,8 +115,29 @@ async function login(req, res) {
 };
 
 async function logout(req, res) {
-  const token = req.headers.authorization.split(' ')[1];
 
+  const loggedOutUser = await prisma.user.findUnique({
+    where: {
+      username: req.userData.username
+    }
+  });
+
+  if (!loggedOutUser) throw new NotFoundError('user is not found');
+
+  if (loggedOutUser.token_created_at >= loggedOutUser.token_expired_at) throw new ForbiddenError('not authorized');
+
+  await prisma.user.update({
+    where: {
+      username: req.userData.username
+    },
+    data: {
+      token_expired_at: req.userData.iat
+    }
+  });
+
+  req.userData.exp = loggedOutUser.token_created_at;
+
+  res.sendStatus(204);
 }
 
 
