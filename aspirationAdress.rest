@@ -4,9 +4,9 @@ GET http://localhost:3000/api/v1/aspiration-addresses
 ###
 curl -X POST http://localhost:3000/api/v1/aspiration-addresses \
 -H "Content-Type: application/json" \
--d '{"aspiration_address": "Staf"}'
+-d '{"aspiration_address": "Mahasiswa"}'
 
 ###
 
-GET http://localhost:3000/api/v1/aspiration-addresses/544d086b-bfcc-4566-92bb-edebc387054d
+curl -X GET http://localhost:3000/api/v1/aspiration-addresses/7e515257-0909-4318-aec5-d1c9e63c42c5 \
 

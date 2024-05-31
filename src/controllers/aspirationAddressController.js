@@ -25,7 +25,7 @@ async function getAspirationAddressById(req, res) {
   try {
     console.log("ID parameter:", req.params.id);
 
-    const aspirationAddress = await prisma.aspiration_address.findUnique({
+    const aspirationAddress = await prisma.aspiration_Address.findUnique({
       where: { aspiration_address_id: req.params.id },
     });
 

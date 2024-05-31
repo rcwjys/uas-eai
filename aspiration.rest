@@ -1,0 +1,11 @@
+###
+GET http://localhost:3000/api/v1/aspiration
+
+###
+curl -X POST http://localhost:3000/api/v1/aspiration/create \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration": "My second aspiration for my friend",
+  "user_id": "6a5b455b-f990-4c2d-b585-f5011946371d",
+  "aspiration_address_id": "ed62a4c6-f7b2-4bce-80ca-2455e4dd9465"
+}'

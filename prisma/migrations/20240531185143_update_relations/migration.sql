@@ -11,11 +11,10 @@ CREATE TABLE `Aspiration_Address` (
 CREATE TABLE `Aspiration` (
     `aspiration_id` VARCHAR(191) NOT NULL,
     `aspiration_status` ENUM('pending', 'approved', 'rejected') NOT NULL DEFAULT 'pending',
+    `aspiration` TEXT NOT NULL,
     `user_id` VARCHAR(191) NOT NULL,
     `aspiration_address_id` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Aspiration_user_id_key`(`user_id`),
-    UNIQUE INDEX `Aspiration_aspiration_address_id_key`(`aspiration_address_id`),
     PRIMARY KEY (`aspiration_id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
