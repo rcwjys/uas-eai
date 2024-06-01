@@ -1,0 +1,19 @@
+GET http://localhost:3000/api/v1/votes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcxMzE3MjksImV4cCI6MTcxNzEzMzUyOX0.Q6F4Cq9nNbumB1EUtev5yNZmFrlF9LzxOPLXFhTtMuQ
+
+###
+GET http://localhost:3000/api/v1/votes/d10114f4-fa01-4ab9-93e5-50e37f226e44
+
+###
+POST http://localhost:3000/api/v1/votes
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcyMjk3MDQsImV4cCI6MTcxNzIzMTUwNH0.9qB0_bgnSk2I_McaY5v5GjVdAPyUKtaFdl2IZA4nPpg
+
+{
+  "candidate_id": "da5f9d45-d28a-4abb-b286-33e0dbb0a5aa",
+  "voter_name": "johndoe"
+}
+
+###
+DELETE http://localhost:3000/api/v1/votes/daa5fb68-cef2-4d45-911e-0511d34d280b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcxMzE3MjksImV4cCI6MTcxNzEzMzUyOX0.Q6F4Cq9nNbumB1EUtev5yNZmFrlF9LzxOPLXFhTtMuQ

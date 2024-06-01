@@ -4,13 +4,35 @@ class ValidationError extends Error {
   }
 }
 
-class NotFoundError extends Error {
+class ForbiddenError extends Error {
   constructor(message) {
     super(message);
-    this.name = 'NotFoundError';
-    this.statusCode = 404;
   }
 }
 
+class NotAuthorizeError extends Error {
+  constructor(message) {
+    super(message);
+  }
+ }
 
-export {ValidationError, NotFoundError};
+class NotFoundError extends Error {
+  constructor(message) {
+    super(message);
+  }
+}
+
+export {ValidationError, ForbiddenError, NotFoundError, NotAuthorizeError};
+
+
+
+// class NotFoundError extends Error {
+//   constructor(message) {
+//     super(message);
+//     this.name = 'NotFoundError';
+//     this.statusCode = 404;
+//   }
+// }
+
+
+// export {ValidationError, NotFoundError};

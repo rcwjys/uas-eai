@@ -15,32 +15,36 @@ model User {
   user_refresh_token String @unique @db.VarChar(255)
   user_attempt       Int    @default(1)
   user_role          Role   @default(students)
+  token_created_at   Int?
+  token_expired_at   Int?
   votes              Votes?
   aspirations        Aspiration[]
 }
 
 model Candidate {
-  candidate_id        String @id @default(uuid())
-  candidate_name      String @unique @db.VarChar(50)
-  candidate_biography String @db.Text
-  candidate_vision    String @db.Text
-  candidate_mission   String @db.Text
-  candidate           Votes?
+  candidate_id        String  @id @default(uuid())
+  candidate_name      String  @unique @db.VarChar(50)
+  candidate_slug      String? @unique
+  candidate_biography String  @db.Text
+  candidate_vision    String  @db.Text
+  candidate_mission   String  @db.Text
+  Votes               Votes?
 }
 
 model Votes {
   vote_id      String    @id @default(uuid())
   created_at   DateTime  @default(now()) @map("created_at")
-  voter_id     String    @unique
-  voter        User      @relation(fields: [voter_id], references: [user_id], onDelete: Cascade)
-  candidate_id String    @unique
+  voter_name   String    @unique
+  voter        User      @relation(fields: [voter_name], references: [username], onDelete: Cascade)
   candidate    Candidate @relation(fields: [candidate_id], references: [candidate_id], onDelete: Cascade)
+  candidate_id String    @unique
 }
 
 enum Role {
   students
   himpunan
   lecture
+  admin
 }
 
 model Aspiration_Address {
