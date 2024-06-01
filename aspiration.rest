@@ -5,7 +5,36 @@ GET http://localhost:3000/api/v1/aspiration
 curl -X POST http://localhost:3000/api/v1/aspiration/create \
 -H "Content-Type: application/json" \
 -d '{
-  "aspiration": "My second aspiration for my friend",
+  "aspiration": "Cara jadi ketua himpunan???",
   "user_id": "6a5b455b-f990-4c2d-b585-f5011946371d",
   "aspiration_address_id": "ed62a4c6-f7b2-4bce-80ca-2455e4dd9465"
 }'
+
+###
+GET http://localhost:3000/api/v1/aspiration/54c3fb64-03d2-48c9-a832-3e414454f5a6
+
+
+###
+GET http://localhost:3000/api/v1/aspiration/user/johndoe
+
+
+###
+curl -X PATCH http://localhost:3000/api/v1/aspiration/ceda1c3d-067c-4b30-93c5-b7553059a62c \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration": "My third aspiration for my sister",
+  "user_id": "6a5b455b-f990-4c2d-b585-f5011946371d",
+  "aspiration_address_id": "ed62a4c6-f7b2-4bce-80ca-2455e4dd9465"
+}'
+
+### Admin
+curl -X PATCH http://localhost:3000/api/v1/aspiration/status/7e7fac58-499b-4ba8-b707-5c68898947e2 \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration_status": "rejected" 
+}'
+
+#aspiration_status (pending, approved, rejected)
+
+###
+DELETE http://localhost:3000/api/v1/aspiration/ceda1c3d-067c-4b30-93c5-b7553059a62c

@@ -1,7 +1,6 @@
-// controllers/aspirationAddressController.js
 import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
-import { NotFoundError, ValidationError } from '../utils/error.js';
+import { NotFoundError } from '../utils/error.js';
 
 const prisma = new PrismaClient();
 
@@ -88,13 +87,13 @@ async function updateAspirationAddress(req, res) {
 
     const { aspiration_address } = aspirationAddressSchema.parse(req.body);
 
-    const existingAspirationAddress = await prisma.aspiration_address.findUnique({
+    const existingAspirationAddress = await prisma.aspiration_Address.findUnique({
       where: { aspiration_address_id: req.params.id },
     });
 
     if (!existingAspirationAddress) throw new NotFoundError('Aspiration address not found');
 
-    const updatedAspirationAddress = await prisma.aspiration_address.update({
+    const updatedAspirationAddress = await prisma.aspiration_Address.update({
       where: { aspiration_address_id: req.params.id },
       data: { aspiration_address },
     });
@@ -113,17 +112,20 @@ async function updateAspirationAddress(req, res) {
 
 async function deleteAspirationAddress(req, res) {
   try {
-    const aspirationAddress = await prisma.aspiration_address.findUnique({
+    const aspirationAddress = await prisma.aspiration_Address.findUnique({
       where: { aspiration_address_id: req.params.id },
     });
 
     if (!aspirationAddress) throw new NotFoundError('Aspiration address not found');
 
-    await prisma.aspiration_address.delete({
+    await prisma.aspiration_Address.delete({
       where: { aspiration_address_id: req.params.id },
     });
 
-    res.sendStatus(204);
+    res.status(200).json({
+      success: true,
+      message: `Aspiration address with ID ${req.params.id} has been successfully deleted.`,
+    });
   } catch (error) {
     res.status(500).json({
       success: false,
