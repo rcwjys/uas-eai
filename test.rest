@@ -20,8 +20,15 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/v1/users/logout
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcxMzUyOTMsImV4cCI6MTcxNzEzNzA5M30.Nl2GEnxRo6VKc1ZKE3P71q-Ox1YzNa-Qz2NVNZhvi3E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcyMTkzNDUsImV4cCI6MTcxNzIxOTM1MH0.RRWnXsaYsBtqf1m6Crw5f7hf32WLESfQ9ijUh89vdMs
 
+###
+POST http://localhost:3000/api/v1/users/access-token 
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcyMjIyMDAsImV4cCI6MTcxNzIyMjIzMH0.FnT45-11tbrijnfEovKRCuKtp19490lhnKdLHLRghNs"
+}
 
 
 

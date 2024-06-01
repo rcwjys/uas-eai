@@ -1,5 +1,5 @@
   import {z} from 'zod';
-  import {ForbiddenError,NotFoundError, ValidationError} from './error.js';
+  import {ForbiddenError,NotAuthorizeError,NotFoundError, ValidationError} from './error.js';
 
   const errorHandler = (err, req, res, next) => {
     if (err instanceof z.ZodError) {
@@ -22,9 +22,18 @@
       });
     } else if (err instanceof ForbiddenError) {
         console.log(err);
-        return res.status(401).json({
+        return res.status(403).json({
         success: false,
         error: 'Forbidden Error',
+        details: {
+          message: err.message
+        }
+      });
+    }else if (err instanceof NotAuthorizeError) {
+      console.log(err);
+      return res.status(401).json({
+        success: false, 
+        error: 'Not Authorize',
         details: {
           message: err.message
         }

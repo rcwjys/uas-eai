@@ -6,6 +6,7 @@ import {
   getCandidateDetail, 
   storeCandidate, 
   updateCandidate } from '../controllers/candidateController.js';
+import { authenticate } from '../../middleware/authenticateMiddleware.js';
 
 
 
@@ -15,7 +16,7 @@ candidateRouter.get('/api/v1/candidates', tryCatch(getCandidate));
 
 candidateRouter.get('/api/v1/candidates/:candidate_name', tryCatch(getCandidateDetail));
 
-candidateRouter.post('/api/v1/candidates', tryCatch(storeCandidate));
+candidateRouter.post('/api/v1/candidates',tryCatch(authenticate), tryCatch(storeCandidate));
 
 candidateRouter.patch('/api/v1/candidates/:id', tryCatch(updateCandidate));
 

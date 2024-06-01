@@ -1,6 +1,6 @@
 import {z} from 'zod';
 import bcrypt from 'bcrypt';
-import { ForbiddenError, NotFoundError, ValidationError } from '../utils/error.js';
+import { ForbiddenError, NotAuthorizeError, NotFoundError, ValidationError } from '../utils/error.js';
 import { PrismaClient } from '@prisma/client';
 import { generateRefreshToken, generateToken } from '../utils/generateToken.js';
 import jwt from 'jsonwebtoken';
@@ -63,8 +63,6 @@ async function login(req, res) {
     user_password: z.string().min(6), 
   });
 
-  const prisma = new PrismaClient();
-
   const { username, user_password } = loginSchema.parse(req.body);
 
   const userLoggedIn = await prisma.user.findUnique({
@@ -110,7 +108,10 @@ async function login(req, res) {
 
   res.status(200).json({
     "success": true,
-    "accessToken": token
+    user_id: userLoggedIn.user_id,
+    username: userLoggedIn.username,
+    "accessToken": token,
+    refreshToken,
   });
 };
 
@@ -140,5 +141,35 @@ async function logout(req, res) {
   res.sendStatus(204);
 }
 
+async function getRefreshToken(req, res, next) {
+  
+  const token = req.body.token;
 
-export {register, prisma, login, logout};
+  if (!token) throw new NotAuthorizeError('not authorize');
+
+  jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, async (err, userData) => {
+
+    try {
+      if (err) throw new NotAuthorizeError('not authorize, please relogin');
+    
+      const newAccessToken = await generateToken({
+        username: userData.username,
+        user_id: userData.user_id,
+        user_role: userData.user_role
+      });
+      
+      res.status(200).json({
+        success: true, 
+        accessToken: newAccessToken
+      });
+    } catch (err) {
+      next(err)
+    }
+  });
+  
+}
+
+
+
+
+export {register, prisma, login, logout, getRefreshToken};
