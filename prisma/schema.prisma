@@ -31,12 +31,12 @@ model Candidate {
 }
 
 model Votes {
-  vote_id        String    @id @default(uuid())
-  created_at     DateTime  @default(now()) @map("created_at")
-  voter_name     String    @unique
-  voter          User      @relation(fields: [voter_name], references: [username], onDelete: Cascade)
-  candidate_name String    @unique
-  candidate      Candidate @relation(fields: [candidate_name], references: [candidate_name], onDelete: Cascade)
+  vote_id      String    @id @default(uuid())
+  created_at   DateTime  @default(now()) @map("created_at")
+  voter_name   String    @unique
+  voter        User      @relation(fields: [voter_name], references: [username], onDelete: Cascade)
+  candidate    Candidate @relation(fields: [candidate_id], references: [candidate_id], onDelete: Cascade)
+  candidate_id String    @unique
 }
 
 enum Role {

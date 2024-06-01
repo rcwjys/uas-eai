@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { NotFoundError, ValidationError } from '../utils/error.js';
+import { channel } from '../../config/amqp.js';
 
 
 const prisma = new PrismaClient();
@@ -36,7 +37,7 @@ export async function getDetailsVotes(req, res) {
 
 export async function storeVotes(req, res) {
 
-  const { candidate_name, voter_name } = req.body;
+  const { candidate_id, voter_name } = req.body;
 
   const isValidUser = await prisma.user.findUnique({
     where: {
@@ -49,7 +50,7 @@ export async function storeVotes(req, res) {
 
   const candidateIsValid = await prisma.candidate.findUnique({
     where: {
-      candidate_name
+      candidate_id
     }
   });
 
@@ -58,19 +59,39 @@ export async function storeVotes(req, res) {
 
   const vote = await prisma.votes.create({
     data: {
-      candidate_name,
+      candidate_id,
       voter_name
     }
   });
 
-  await prisma.user.update({
+  const voting = await prisma.user.update({
     where: {
       username: voter_name
     },
     data: {
-      user_attempt: 0
+      user_attempt: 1
     }
-  })
+  });
+
+
+  await channel.assertExchange('votes', 'fanout', {
+    durable: true, 
+    autoDelete: false
+  });
+
+  channel.publish('votes', 'voteLogging', Buffer.from(JSON.stringify(vote)));
+
+  await channel.assertQueue('voteLogging', {durable: true});
+
+  await channel.bindQueue('voteLogging', 'votes');
+
+  await channel.consume('voteLogging', (data) => {
+    const message = JSON.parse(Buffer.from(data.content.toString()));
+    console.log(`${message.voter_name} is votes ${message.candidate_id}`);
+  }, {
+    noAck: true
+  });
+
 
   res.status(201).json({
     success: true,
@@ -78,6 +99,8 @@ export async function storeVotes(req, res) {
       vote
     }
   });
+
+
 }
 
 export async function deleteVotes(req, res) {
