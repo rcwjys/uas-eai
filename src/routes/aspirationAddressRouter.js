@@ -8,12 +8,13 @@ import {
   updateAspirationAddress,
   deleteAspirationAddress,
 } from '../controllers/aspirationAddressController.js';
+import { authenticate } from '../../middleware/authenticateMiddleware.js';
 
 const router = express.Router();
 
 router.get('/api/v1/aspiration-addresses', tryCatch(getAllAspirationAddresses));
 router.get('/api/v1/aspiration-addresses/:id', tryCatch(getAspirationAddressById));
-router.post('/api/v1/aspiration-addresses', tryCatch(createAspirationAddress));
+router.post('/api/v1/aspiration-addresses', tryCatch(authenticate), tryCatch(createAspirationAddress));
 router.patch('/api/v1/aspiration-addresses/:id', tryCatch(updateAspirationAddress));
 router.delete('/api/v1/aspiration-addresses/:id', tryCatch(deleteAspirationAddress));
 
