@@ -20,16 +20,16 @@ app.use(express.json());
 
 
 // app.use(votesRouter);
-app.use(aspirationAddressRouter);
-app.use(aspirationRouter);
+
+
 app.use(authRoutes);
 
-
+app.use(aspirationAddressRouter);
 app.use(candidateRouter);
 
 app.use(tryCatch(authenticate));
-
 app.use(voteRouter);
+app.use(aspirationRouter);
 
 app.use(errorHandler);
 

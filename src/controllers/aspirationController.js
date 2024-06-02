@@ -2,6 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { z } from 'zod';
 import { NotFoundError } from '../utils/error.js';
 
+
 const prisma = new PrismaClient();
 
 
@@ -166,9 +167,10 @@ async function updateAspiration(req, res) {
     }
 };
 
-async function updateAspirationStatus(req, res) {
+
+export async function updateAspirationStatus(req, res) {
   try {
-    console.log('Request body:', req.body);
+    console.log('Request body:', req.body); 
 
     const aspirationStatusSchema = z.object({
       aspiration_status: z.enum(['pending', 'approved', 'rejected'], { message: 'Invalid status' })
@@ -192,6 +194,7 @@ async function updateAspirationStatus(req, res) {
       data: updatedAspiration,
     });
   } catch (error) {
+    console.error(error); 
     res.status(500).json({
       success: false,
       message: error.message,
@@ -199,6 +202,7 @@ async function updateAspirationStatus(req, res) {
     });
   }
 }
+
 
 
 async function deleteAspiration(req, res) {
@@ -232,7 +236,7 @@ export {
     createAspiration,
     getAspirationById,
     updateAspiration,
-    updateAspirationStatus,
+    // updateAspirationStatus,
     deleteAspiration,
     getAspirationByName,
 };
