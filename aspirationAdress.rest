@@ -1,0 +1,18 @@
+###
+GET http://localhost:3000/api/v1/aspiration-addresses
+
+###
+curl -X POST http://localhost:3000/api/v1/aspiration-addresses \
+-H "Content-Type: application/json" \
+-d '{"aspiration_address": "Staf"}'
+
+###
+curl -X GET http://localhost:3000/api/v1/aspiration-addresses/a05c7ccd-68e6-467f-b8b9-a54c145281fe \
+
+###
+curl -X PATCH http://localhost:3000/api/v1/aspiration-addresses/f0446e83-ce91-46d0-b36c-d01459a7301f \
+-H "Content-Type: application/json" \
+-d '{"aspiration_address": "Staf"}'
+
+###
+DELETE http://localhost:3000/api/v1/aspiration-addresses/0f184d6e-5eac-460f-b471-7e85f910480f

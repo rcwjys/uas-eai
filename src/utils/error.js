@@ -23,3 +23,16 @@ class NotFoundError extends Error {
 }
 
 export {ValidationError, ForbiddenError, NotFoundError, NotAuthorizeError};
+
+
+
+// class NotFoundError extends Error {
+//   constructor(message) {
+//     super(message);
+//     this.name = 'NotFoundError';
+//     this.statusCode = 404;
+//   }
+// }
+
+
+// export {ValidationError, NotFoundError};
