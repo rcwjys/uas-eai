@@ -166,10 +166,8 @@ async function updateAspiration(req, res) {
   }
 }
 
-async function updateAspirationStatus(req, res) {
+export async function updateAspirationStatus(req, res) {
   try {
-    console.log("Request body:", req.body);
-
     const aspirationStatusSchema = z.object({
       aspiration_status: z.enum(["pending", "approved", "rejected"], {
         message: "Invalid status",
@@ -194,6 +192,7 @@ async function updateAspirationStatus(req, res) {
       data: updatedAspiration,
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       success: false,
       message: error.message,
