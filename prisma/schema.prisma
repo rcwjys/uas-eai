@@ -8,16 +8,16 @@ datasource db {
 }
 
 model User {
-  user_id            String @id @default(uuid())
-  username           String @unique @db.VarChar(50)
-  user_email         String @unique @db.VarChar(100)
-  user_password      String @db.VarChar(255)
-  user_refresh_token String @unique @db.VarChar(255)
-  user_attempt       Int    @default(1)
-  user_role          Role   @default(students)
+  user_id            String       @id @default(uuid())
+  username           String       @unique @db.VarChar(50)
+  user_email         String       @unique @db.VarChar(100)
+  user_password      String       @db.VarChar(255)
+  user_refresh_token String       @db.VarChar(255)
+  user_attempt       Int          @default(1)
+  user_role          Role         @default(students)
   token_created_at   Int?
   token_expired_at   Int?
-  votes              Votes?
+  votes              Vote[]       // Changed from Votes to Vote[]
   aspirations        Aspiration[]
 }
 
@@ -28,16 +28,20 @@ model Candidate {
   candidate_biography String  @db.Text
   candidate_vision    String  @db.Text
   candidate_mission   String  @db.Text
-  Votes               Votes?
+  votes               Vote[]  // Changed from Votes to Vote[]
 }
 
-model Votes {
+model Vote {               // Changed from Votes to Vote
   vote_id      String    @id @default(uuid())
   created_at   DateTime  @default(now()) @map("created_at")
-  voter_name   String    @unique
-  voter        User      @relation(fields: [voter_name], references: [username], onDelete: Cascade)
+  voter_id     String
+  candidate_id String
+
+  voter        User      @relation(fields: [voter_id], references: [user_id], onDelete: Cascade)
   candidate    Candidate @relation(fields: [candidate_id], references: [candidate_id], onDelete: Cascade)
-  candidate_id String    @unique
+
+  @@index([voter_id])
+  @@index([candidate_id])
 }
 
 enum Role {
