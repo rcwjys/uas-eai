@@ -230,7 +230,6 @@ export {
   createAspiration,
   getAspirationById,
   updateAspiration,
-  updateAspirationStatus,
   deleteAspiration,
   getAspirationByName,
 };
