@@ -1,11 +1,11 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 async function generateToken(data) {
-  return jwt.sign(data, process.env.TOKEN_SECRET, {expiresIn: '30m'});
+  return jwt.sign(data, process.env.TOKEN_SECRET, { expiresIn: "10s" });
 }
 
 async function generateRefreshToken(data) {
-  return jwt.sign(data, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '3d'});
+  return jwt.sign(data, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "3d" });
 }
 
-export {generateToken, generateRefreshToken};
+export { generateToken, generateRefreshToken };

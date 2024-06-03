@@ -134,21 +134,24 @@ async function logout(req, res) {
     },
   });
 
-  if (!loggedOutUser) throw new NotFoundError("user is not found");
+  if (!loggedOutUser) throw new NotFoundError("User not found");
 
-  if (loggedOutUser.token_created_at >= loggedOutUser.token_expired_at)
-    throw new ForbiddenError("not authorized");
+  const currentTimestamp = Math.floor(Date.now() / 1000);
+
+  if (currentTimestamp >= loggedOutUser.token_expired_at) {
+    throw new ForbiddenError("Token expired, not authorized to logout");
+  }
 
   await prisma.user.update({
     where: {
       username: req.userData.username,
     },
     data: {
-      token_expired_at: req.userData.iat,
+      token_expired_at: currentTimestamp,
     },
   });
 
-  req.userData.exp = loggedOutUser.token_created_at;
+  req.userData = {};
 
   res.sendStatus(204);
 }
