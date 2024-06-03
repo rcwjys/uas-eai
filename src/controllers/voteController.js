@@ -102,7 +102,7 @@ export async function storeVotes(req, res) {
 }
 
 export async function deleteVotes(req, res) {
-  const vote = await prisma.votes.findUnique({
+  const vote = await prisma.vote.findUnique({
     where: {
       vote_id: req.params.id,
     },
@@ -110,7 +110,7 @@ export async function deleteVotes(req, res) {
 
   if (!vote) throw new NotFoundError("vote is not found");
 
-  const deletedVote = await prisma.votes.delete({
+  const deletedVote = await prisma.vote.delete({
     where: {
       vote_id: req.params.id,
     },
