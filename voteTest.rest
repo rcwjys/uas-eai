@@ -1,5 +1,5 @@
 GET http://localhost:3000/api/v1/votes
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcxMzE3MjksImV4cCI6MTcxNzEzMzUyOX0.Q6F4Cq9nNbumB1EUtev5yNZmFrlF9LzxOPLXFhTtMuQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhOTA2MWQ4LTUxOGQtNDk2ZS1iODcxLTRjOGVlYTVlNTdiOSIsInVzZXJfcm9sZSI6InN0dWRlbnRzIiwiaWF0IjoxNzE3Mzc3ODkxLCJleHAiOjE3MTczNzk2OTF9.ICLFwextboNBgjyDufWXe6-RZ__pt9kJqQAWL4lzzzo
 
 ###
 GET http://localhost:3000/api/v1/votes/d10114f4-fa01-4ab9-93e5-50e37f226e44
@@ -7,13 +7,14 @@ GET http://localhost:3000/api/v1/votes/d10114f4-fa01-4ab9-93e5-50e37f226e44
 ###
 POST http://localhost:3000/api/v1/votes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbmciLCJ1c2VyX2lkIjoiYTA1NzAwOWQtM2IyZS00ODYyLTk3ZjQtM2I3YzBkMzViNzg5IiwidXNlcl9yb2xlIjoic3R1ZGVudHMiLCJpYXQiOjE3MTczMjUwNDUsImV4cCI6MTcxNzMyNjg0NX0.ZOY4_wPrflFYxSu3m5VmbFJilSBrp5gD1_4MxJZSOnk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhOTA2MWQ4LTUxOGQtNDk2ZS1iODcxLTRjOGVlYTVlNTdiOSIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NDAyNjgzLCJleHAiOjE3MTc0MDQ0ODN9.5vTFegEYmMHdRYy0ozgDJ0fTMCFluueYnfCxqqNQm3M
 
 {
-  "candidate_id": "92902c50-3078-45aa-b1a0-9f75e00923db",
-  "voter_name": "ming"
+  "user_id": "3e71da7a-cba2-42cd-9ce0-c61d067e4dc5",
+  "candidate_id": "9309ba60-0ef5-48e4-829c-22afe17be26c"
+
 }
 
 ###
-DELETE http://localhost:3000/api/v1/votes/daa5fb68-cef2-4d45-911e-0511d34d280b
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcxMzE3MjksImV4cCI6MTcxNzEzMzUyOX0.Q6F4Cq9nNbumB1EUtev5yNZmFrlF9LzxOPLXFhTtMuQ
+DELETE http://localhost:3000/api/v1/votes/1f12d5af-6050-490d-b2ff-6c0c85f333ed
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhOTA2MWQ4LTUxOGQtNDk2ZS1iODcxLTRjOGVlYTVlNTdiOSIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NDA4ODg5LCJleHAiOjE3MTc0MTA2ODl9.QLs0dJk2DTKFoouymBKPT7_uWZZTtEK45LFg-38bmZU

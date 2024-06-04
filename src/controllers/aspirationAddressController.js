@@ -1,6 +1,6 @@
-import { PrismaClient } from '@prisma/client';
-import { z } from 'zod';
-import { NotFoundError } from '../utils/error.js';
+import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
+import { NotFoundError } from "../utils/error.js";
 
 const prisma = new PrismaClient();
 
@@ -14,7 +14,7 @@ const getAllAspirationAddresses = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: 'Failed to fetch aspiration addresses',
+      message: "Failed to fetch aspiration addresses",
       error: error.message,
     });
   }
@@ -29,7 +29,7 @@ async function getAspirationAddressById(req, res) {
     });
 
     if (!aspirationAddress) {
-      throw new NotFoundError('Aspiration address not found');
+      throw new NotFoundError("Aspiration address not found");
     }
 
     res.status(200).json({
@@ -45,12 +45,13 @@ async function getAspirationAddressById(req, res) {
   }
 }
 
-
 async function createAspirationAddress(req, res) {
   try {
-    console.log('Request body:', req.body);
+    console.log("Request body:", req.body);
     const aspirationAddressSchema = z.object({
-      aspiration_address: z.string().min(1, { message: 'Aspiration address is required' }),
+      aspiration_address: z
+        .string()
+        .min(1, { message: "Aspiration address is required" }),
     });
 
     const { aspiration_address } = aspirationAddressSchema.parse(req.body);
@@ -58,7 +59,7 @@ async function createAspirationAddress(req, res) {
       where: { aspiration_address },
     });
 
-    if (isUniqueAddress) throw new Error('Aspiration address already exists');
+    if (isUniqueAddress) throw new Error("Aspiration address already exists");
 
     const newAspirationAddress = await prisma.aspiration_Address.create({
       data: { aspiration_address },
@@ -77,21 +78,23 @@ async function createAspirationAddress(req, res) {
   }
 }
 
-
-
 async function updateAspirationAddress(req, res) {
   try {
     const aspirationAddressSchema = z.object({
-      aspiration_address: z.string().min(1, { message: 'Aspiration address is required' }),
+      aspiration_address: z
+        .string()
+        .min(1, { message: "Aspiration address is required" }),
     });
 
     const { aspiration_address } = aspirationAddressSchema.parse(req.body);
 
-    const existingAspirationAddress = await prisma.aspiration_Address.findUnique({
-      where: { aspiration_address_id: req.params.id },
-    });
+    const existingAspirationAddress =
+      await prisma.aspiration_Address.findUnique({
+        where: { aspiration_address_id: req.params.id },
+      });
 
-    if (!existingAspirationAddress) throw new NotFoundError('Aspiration address not found');
+    if (!existingAspirationAddress)
+      throw new NotFoundError("Aspiration address not found");
 
     const updatedAspirationAddress = await prisma.aspiration_Address.update({
       where: { aspiration_address_id: req.params.id },
@@ -116,7 +119,8 @@ async function deleteAspirationAddress(req, res) {
       where: { aspiration_address_id: req.params.id },
     });
 
-    if (!aspirationAddress) throw new NotFoundError('Aspiration address not found');
+    if (!aspirationAddress)
+      throw new NotFoundError("Aspiration address not found");
 
     await prisma.aspiration_Address.delete({
       where: { aspiration_address_id: req.params.id },
