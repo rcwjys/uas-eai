@@ -7,11 +7,11 @@ GET http://localhost:3000/api/v1/votes/d10114f4-fa01-4ab9-93e5-50e37f226e44
 ###
 POST http://localhost:3000/api/v1/votes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5kb2UiLCJ1c2VyX2lkIjoiMDg4MWFhYzgtYWJlOC00N2EyLTkyN2UtODRhY2NjNGZlNTMxIiwidXNlcl9yb2xlIjoiYWRtaW4iLCJpYXQiOjE3MTcyMjk3MDQsImV4cCI6MTcxNzIzMTUwNH0.9qB0_bgnSk2I_McaY5v5GjVdAPyUKtaFdl2IZA4nPpg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbmciLCJ1c2VyX2lkIjoiYTA1NzAwOWQtM2IyZS00ODYyLTk3ZjQtM2I3YzBkMzViNzg5IiwidXNlcl9yb2xlIjoic3R1ZGVudHMiLCJpYXQiOjE3MTczMjUwNDUsImV4cCI6MTcxNzMyNjg0NX0.ZOY4_wPrflFYxSu3m5VmbFJilSBrp5gD1_4MxJZSOnk
 
 {
-  "candidate_id": "da5f9d45-d28a-4abb-b286-33e0dbb0a5aa",
-  "voter_name": "johndoe"
+  "candidate_id": "92902c50-3078-45aa-b1a0-9f75e00923db",
+  "voter_name": "ming"
 }
 
 ###
