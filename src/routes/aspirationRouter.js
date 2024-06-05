@@ -1,5 +1,4 @@
 import express from 'express';
-import { authenticate } from '../../middleware/authenticateMiddleware.js';
 import { isAdmin } from '../../middleware/adminMiddleware.js';
 import { tryCatch } from '../utils/tryCatch.js';
 import {
@@ -13,12 +12,13 @@ import {
     
     
 } from '../controllers/aspirationController.js';
+import { authenticate } from '../../middleware/authenticateMiddleware.js';
 
 
 
 const router = express.Router();
 
-router.get('/api/v1/aspiration', tryCatch(getAllAspiration));
+router.get('/api/v1/aspiration', tryCatch(authenticate), tryCatch(getAllAspiration));
 router.get('/api/v1/aspiration/:id', tryCatch(getAspirationById));
 router.post('/api/v1/aspiration/create', tryCatch(authenticate), tryCatch(createAspiration));
 router.patch('/api/v1/aspiration/:id', tryCatch(updateAspiration));

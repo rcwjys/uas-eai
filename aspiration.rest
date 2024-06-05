@@ -1,18 +1,22 @@
 ###
 GET http://localhost:3000/api/v1/aspiration
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY
 
 ###
 curl -X POST http://localhost:3000/api/v1/aspiration/create \
--H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbmciLCJ1c2VyX2lkIjoiYTA1NzAwOWQtM2IyZS00ODYyLTk3ZjQtM2I3YzBkMzViNzg5IiwidXNlcl9yb2xlIjoic3R1ZGVudHMiLCJpYXQiOjE3MTczMTk1ODksImV4cCI6MTcxNzMyMTM4OX0.xXN03F1BXD2ZTp4OSUa9OQFlzJDIJhTMF25LifJ6ZNs" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzUyMTM1MywiZXhwIjoxNzE3NTY0NTUzfQ.BNAc5DpBYjjxTJCTQfuqI9ryFjPOePiSFECDAVqdFBY" \
 -H "Content-Type: application/json" \
 -d '{
   "aspiration": "Cara jadi ketua himpunan???",
-  "user_id": "0881aac8-abe8-47a2-927e-84accc4fe531",
-  "aspiration_address_id": "2d2c3853-1aaa-4e4a-8356-ceb3c46e07c3"
+  "user_id": "1c435668-66a9-468c-a40b-6d9ccea87344",
+  "aspiration_address_id": "a05c7ccd-68e6-467f-b8b9-a54c145281fe"
 }'
 
 ###
-GET http://localhost:3000/api/v1/aspiration/54c3fb64-03d2-48c9-a832-3e414454f5a6
+
+GET http://localhost:3000/api/v1/aspiration/00735b82-f4da-4899-8124-c35b0c37087e
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY
+
 
 
 ###
@@ -20,13 +24,13 @@ GET http://localhost:3000/api/v1/aspiration/user/johndoe
 
 
 ###
-PATCH http://localhost:3000/api/v1/aspiration/ceda1c3d-067c-4b30-93c5-b7553059a62c \
-Content-Type: application/json
-
-{
-  "aspiration": "My third aspiration for my sister",
-  "user_id": "6a5b455b-f990-4c2d-b585-f5011946371d",
-  "aspiration_address_id": "ed62a4c6-f7b2-4bce-80ca-2455e4dd9465"
+curl -X PATCH http://localhost:3000/api/v1/aspiration/00735b82-f4da-4899-8124-c35b0c37087e \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY" \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration": "Cara jadi ketua himpunan test 1???",
+  "user_id": "1c435668-66a9-468c-a40b-6d9ccea87344",
+  "aspiration_address_id": "a05c7ccd-68e6-467f-b8b9-a54c145281fe"
 }'
 
 ### Admin

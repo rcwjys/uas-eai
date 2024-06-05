@@ -105,7 +105,7 @@ async function createAspiration(req, res) {
     });
 
     if (!aspirationAddress) {
-      throw new NotFoundError("Aspiration not found");
+      throw new NotFoundError("Aspiration Address not found");
     }
 
     const newAspiration = await prisma.aspiration.create({
