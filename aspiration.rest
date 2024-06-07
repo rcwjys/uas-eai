@@ -1,6 +1,6 @@
 ###
 GET http://localhost:3000/api/v1/aspiration
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc4MTk0MCwiZXhwIjoxNzE3ODI1MTQwfQ.i9vBvzH0qIwYNdJ5Li5gwzbcbVonVSLakaZGDRN2O9Q
 
 ###
 curl -X POST http://localhost:3000/api/v1/aspiration/create \
@@ -15,30 +15,36 @@ curl -X POST http://localhost:3000/api/v1/aspiration/create \
 ###
 
 GET http://localhost:3000/api/v1/aspiration/00735b82-f4da-4899-8124-c35b0c37087e
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc4MTk0MCwiZXhwIjoxNzE3ODI1MTQwfQ.i9vBvzH0qIwYNdJ5Li5gwzbcbVonVSLakaZGDRN2O9Q
 
 
 
 ###
 GET http://localhost:3000/api/v1/aspiration/user/johndoe
 
+###
+GET http://localhost:3000/api/v1/userId/8f96bc8d-4c25-4398-b372-b8b80b061355
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc4MTk0MCwiZXhwIjoxNzE3ODI1MTQwfQ.i9vBvzH0qIwYNdJ5Li5gwzbcbVonVSLakaZGDRN2O9Q
+
+
 
 ###
-curl -X PATCH http://localhost:3000/api/v1/aspiration/00735b82-f4da-4899-8124-c35b0c37087e \
--H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzU3NTM4NywiZXhwIjoxNzE3NjE4NTg3fQ.C2LwwmDoKEAvi6Sk6gJSMsFOwS3bGmhvOLpaguvOqAY" \
+curl -X PATCH http://localhost:3000/api/v1/aspiration/54c3fb64-03d2-48c9-a832-3e414454f5a6 \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc1MTE1NCwiZXhwIjoxNzE3Nzk0MzU0fQ.WoG2dostJhAv73fcBEA4g89DAOPDSTMoOEuNNVg1fxw" \
 -H "Content-Type: application/json" \
 -d '{
-  "aspiration": "Cara jadi ketua himpunan test 1???",
+  "aspiration": "Cara jadi ketua ss ???",
   "user_id": "1c435668-66a9-468c-a40b-6d9ccea87344",
-  "aspiration_address_id": "a05c7ccd-68e6-467f-b8b9-a54c145281fe"
+  "aspiration_address_id": "a05c7ccd-68e6-467f-b8b9-a54c145281fe",
+  "aspiration_status" : "pending"
 }'
 
 ### Admin
-PATCH http://localhost:3000/api/v1/aspiration/status/7e7fac58-499b-4ba8-b707-5c68898947e2 \
-Content-Type: application/json
-
-{
-  "aspiration_status": "rejected" 
+curl -X PATCH http://localhost:3000/api/v1/aspiration/status/54c3fb64-03d2-48c9-a832-3e414454f5a6 \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc1MTE1NCwiZXhwIjoxNzE3Nzk0MzU0fQ.WoG2dostJhAv73fcBEA4g89DAOPDSTMoOEuNNVg1fxw" \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration_status" : "rejected"
 }'
 
 #aspiration_status (pending, approved, rejected)
