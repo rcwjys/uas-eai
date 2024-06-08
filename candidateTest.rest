@@ -10,7 +10,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3a
 Content-Type: application/json
 
 {
-  "candidate_name": "Joh",
+  "candidate_name": "John 2",
   "candidate_biography": "John Doe has a rich background in community service and leadership.",
   "candidate_vision": "To create a more inclusive and prosperous community for all.",
   "candidate_mission": "To implement policies that promote economic growth, education, and social justice."

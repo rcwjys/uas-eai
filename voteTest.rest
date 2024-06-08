@@ -12,6 +12,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3a
 {
   "user_id": "ea9061d8-518d-496e-b871-4c8eea5e57b9",
   "candidate_id": "9309ba60-0ef5-48e4-829c-22afe17be26c"
+
 }
 
 ###
