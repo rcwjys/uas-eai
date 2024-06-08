@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 
 async function generateToken(data) {
-  return jwt.sign(data, process.env.TOKEN_SECRET, { expiresIn: "12h" });
+  return jwt.sign(data, process.env.TOKEN_SECRET, { expiresIn: "45m" });
 }
 
 async function generateRefreshToken(data) {

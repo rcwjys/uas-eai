@@ -28,8 +28,11 @@ app.use(aspirationAddressRouter);
 app.use(candidateRouter);
 
 app.use(tryCatch(authenticate));
+
 app.use(voteRouter);
+
 app.use(aspirationRouter);
+
 
 app.use(errorHandler);
 

@@ -156,6 +156,7 @@ async function logout(req, res) {
   res.sendStatus(204);
 }
 
+
 async function getRefreshToken(req, res, next) {
   const token = req.body.token;
 
