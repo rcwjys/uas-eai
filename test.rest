@@ -3,9 +3,9 @@ POST http://localhost:3000/api/v1/users/register
 Content-Type: application/json
 
 {
-  "username": "amer",
-  "user_email": "amer@example.com",
-  "user_password": "12345678",
+  "username": "ewing",
+  "user_email": "ewing@example.com",
+  "user_password": "ewing123",
   "user_attempt": 1
 }
 
@@ -14,8 +14,8 @@ POST http://localhost:3000/api/v1/users/login
 Content-Type: application/json
 
 {
-  "username": "adminn",
-  "user_password": "12345678"
+  "username": "randy",
+  "user_password": "rcwjys"
 }
 
 ###

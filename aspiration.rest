@@ -18,9 +18,28 @@ GET http://localhost:3000/api/v1/aspiration/00735b82-f4da-4899-8124-c35b0c37087e
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzc4MTk0MCwiZXhwIjoxNzE3ODI1MTQwfQ.i9vBvzH0qIwYNdJ5Li5gwzbcbVonVSLakaZGDRN2O9Q
 
 
+###
+curl -X POST http://localhost:3000/api/v1/aspiration/create \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhMDgzYzhkLTE5MTQtNDVjOC04NjhiLTlkYTIwMjAxYmQyMCIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NzAzNzAyLCJleHAiOjE3MTc3NDY5MDJ9.m5vM-R0gsRvkqSWCXst8M3tZA6pENnGBQ68_oesnv1E" \
+-H "Content-Type: application/json" \
+-d '{
+  "aspiration": "Cara jadi ketua himpunan???",
+  "user_id": "9aca78c1-705d-4fa6-9472-70b6a3bb75aa",
+  "aspiration_address_id": "0bc7a76d-abff-4dc5-9a3e-e5d93f64ce24"
+}'
+
+###
+GET http://localhost:3000/api/v1/aspiration/userId/9aca78c1-705d-4fa6-9472-70b6a3bb75aa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbmR5IiwidXNlcl9pZCI6IjlhY2E3OGMxLTcwNWQtNGZhNi05NDcyLTcwYjZhM2JiNzVhYSIsInVzZXJfcm9sZSI6InN0dWRlbnRzIiwiaWF0IjoxNzE3NzY3MjA0LCJleHAiOjE3MTc4MTA0MDR9.ba0igb-vxXVorJTYHNh8U_DVpQnXZ4BXF3waGD8lyIA
+
 
 ###
 GET http://localhost:3000/api/v1/aspiration/user/johndoe
+
+###
+GET http://localhost:3000/api/v1/aspiration/userId/9aca78c1-705d-4fa6-9472-70b6a3bb75aa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbmR5IiwidXNlcl9pZCI6IjlhY2E3OGMxLTcwNWQtNGZhNi05NDcyLTcwYjZhM2JiNzVhYSIsInVzZXJfcm9sZSI6InN0dWRlbnRzIiwiaWF0IjoxNzE3NzY3MjA0LCJleHAiOjE3MTc4MTA0MDR9.ba0igb-vxXVorJTYHNh8U_DVpQnXZ4BXF3waGD8lyIA
+
 
 ###
 GET http://localhost:3000/api/v1/userId/8f96bc8d-4c25-4398-b372-b8b80b061355

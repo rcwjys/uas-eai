@@ -3,7 +3,7 @@ GET http://localhost:3000/api/v1/aspiration-addresses
 
 ###
 curl -X POST http://localhost:3000/api/v1/aspiration-addresses \
--H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWlubiIsInVzZXJfaWQiOiI4Zjk2YmM4ZC00YzI1LTQzOTgtYjM3Mi1iOGI4MGIwNjEzNTUiLCJ1c2VyX3JvbGUiOiJhZG1pbiIsImlhdCI6MTcxNzUxMzM2MSwiZXhwIjoxNzE3NTU2NTYxfQ._46xhxkRTrGWEDtA0Z-av9V_fKxjVO5N4fVffo127is" \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhMDgzYzhkLTE5MTQtNDVjOC04NjhiLTlkYTIwMjAxYmQyMCIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NzAzNzAyLCJleHAiOjE3MTc3NDY5MDJ9.m5vM-R0gsRvkqSWCXst8M3tZA6pENnGBQ68_oesnv1E" \
 -H "Content-Type: application/json" \
 -d '{"aspiration_address": "Staf3"}'
 

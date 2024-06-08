@@ -10,6 +10,8 @@ import {
     deleteAspiration,
     getAspirationByName,
     getUserById,
+    getAspirationByUserId,
+    
     
     
 } from '../controllers/aspirationController.js';
@@ -27,5 +29,8 @@ router.patch('/api/v1/aspiration/status/:id',tryCatch(isAdmin), tryCatch(updateA
 router.delete('/api/v1/aspiration/:id', tryCatch(deleteAspiration));
 router.get('/api/v1/aspiration/user/:username', tryCatch(getAspirationByName));
 router.get('/api/v1/userId/:user_id', tryCatch(getUserById));
+router.get('/api/v1/aspiration/userId/:user_id', tryCatch(getAspirationByUserId));
+
+
 
 export { router as aspirationRouter };
