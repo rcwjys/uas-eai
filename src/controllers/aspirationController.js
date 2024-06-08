@@ -77,38 +77,6 @@ async function getAspirationByUserId(req, res) {
   }
 }
 
-async function getUserbyId (req, res){
-  try {
-    const user_idSchema = z.object({
-        user_id: z.string().uuid({ message: "Invalid user ID" }),
-    });
-
-    const { user_id } = user_idSchema.parse(req.params);
-
-    const user = await prisma.user.findUnique({
-        where: { user_id },
-        select: {
-            username: true, // Pilih hanya username
-        },
-    });
-
-    if (!user) {
-        throw new NotFoundError("User not found");
-    }
-
-    res.status(200).json({
-        success: true,
-        data: user,
-    });
-} catch (error) {
-    res.status(500).json({
-        success: false,
-        message: error.message,
-        error: error.errors || [],
-    });
-}
-};
-
 async function getAspirationByName(req, res) {
   try {
     const usernameSchema = z.object({
@@ -141,6 +109,8 @@ async function getAspirationByName(req, res) {
   }
 }
 
+
+
 async function createAspiration(req, res) {
   try {
     console.log("Request body:", req.body);
@@ -169,7 +139,7 @@ async function createAspiration(req, res) {
     });
 
     if (!aspirationAddress) {
-      throw new NotFoundError("Aspiration not found");
+      throw new NotFoundError("Aspiration Address not found");
     }
 
     const newAspiration = await prisma.aspiration.create({
@@ -200,12 +170,13 @@ async function updateAspiration(req, res) {
     const aspirationSchema = z.object({
       aspiration: z.string().min(1, { message: "Aspiration is required" }),
       user_id: z.string().uuid({ message: "Invalid user ID" }),
+      aspiration_status: z.enum(["pending", "approved", "rejected"]),
       aspiration_address_id: z
         .string()
         .uuid({ message: "Invalid aspiration ID" }),
     });
 
-    const { aspiration } = aspirationSchema.parse(req.body);
+    const validatedData = aspirationSchema.parse(req.body);
 
     const existingAspiration = await prisma.aspiration.findUnique({
       where: { aspiration_id: req.params.id },
@@ -215,7 +186,7 @@ async function updateAspiration(req, res) {
 
     const updatedAspiration = await prisma.aspiration.update({
       where: { aspiration_id: req.params.id },
-      data: { aspiration },
+      data: validatedData,
     });
 
     res.status(200).json({
@@ -289,6 +260,35 @@ async function deleteAspiration(req, res) {
   }
 }
 
+async function getUserById(req, res) {
+  try {
+    const user_idSchema = z.object({
+      user_id: z.string().uuid({ message: "Invalid user ID" }),
+    });
+
+    const { user_id } = user_idSchema.parse(req.params);
+
+    const user = await prisma.user.findUnique({
+      where: { user_id },
+    });
+
+    if (!user) {
+      throw new NotFoundError("User not found");
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error.errors || [],
+    });
+  }
+}
+
 export {
   getAllAspiration,
   createAspiration,
@@ -296,6 +296,7 @@ export {
   updateAspiration,
   deleteAspiration,
   getAspirationByName,
+  getUserById,
   getAspirationByUserId,
-  getUserbyId,
+  
 };
