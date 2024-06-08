@@ -45,6 +45,70 @@ async function getAspirationById(req, res) {
   }
 }
 
+async function getAspirationByUserId(req, res) {
+  try {
+    const user_idSchema = z.object({
+      user_id: z.string().uuid({ message: "Invalid user ID" }),
+    });
+
+    const { user_id } = user_idSchema.parse(req.params);
+
+    const user = await prisma.user.findUnique({
+      where: { user_id },
+      include: {
+        aspirations: true,
+      },
+    });
+
+    if (!user) {
+      throw new NotFoundError("User not found");
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user.aspirations,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: error.errors || [],
+    });
+  }
+}
+
+async function getUserbyId (req, res){
+  try {
+    const user_idSchema = z.object({
+        user_id: z.string().uuid({ message: "Invalid user ID" }),
+    });
+
+    const { user_id } = user_idSchema.parse(req.params);
+
+    const user = await prisma.user.findUnique({
+        where: { user_id },
+        select: {
+            username: true, // Pilih hanya username
+        },
+    });
+
+    if (!user) {
+        throw new NotFoundError("User not found");
+    }
+
+    res.status(200).json({
+        success: true,
+        data: user,
+    });
+} catch (error) {
+    res.status(500).json({
+        success: false,
+        message: error.message,
+        error: error.errors || [],
+    });
+}
+};
+
 async function getAspirationByName(req, res) {
   try {
     const usernameSchema = z.object({
@@ -232,4 +296,6 @@ export {
   updateAspiration,
   deleteAspiration,
   getAspirationByName,
+  getAspirationByUserId,
+  getUserbyId,
 };
