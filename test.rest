@@ -1,11 +1,11 @@
 
 POST http://localhost:3000/api/v1/users/register
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbmR5IiwidXNlcl9pZCI6IjNlNzFkYTdhLWNiYTItNDJjZC05Y2UwLWM2MWQwNjdlNGRjNSIsInVzZXJfcm9sZSI6InN0dWRlbnRzIiwiaWF0IjoxNzE3ODQ0MTA5LCJleHAiOjE3MTc4NDQxMjl9.aKihKzftNpEA4qzxHW7AQZAAL13-Io6z7SD9TaTmeG4
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhbmR5IiwidXNlcl9pZCI6IjNlNzFkYTdhLWNiYTItNDJjZC05Y2UwLWM2MWQwNjdlNGRjNSIsInVzZXJfcm9sZSI6InN0dWRlbnRzIiwiaWF0IjoxNzE3ODQ0MTA5LCJleHAiOjE3MTc4NDQxMjl9.aKihKzftNpEA4qzxHW7AQZAAL13-Io6z7SD9TaTmeG4
 
 {
   "username": "ewingg",
-  "user_email": "ewingg@example.com",
+  "user_email": "ewingg@mail.com",
   "user_password": "ewing123",
   "user_attempt": 1
 }
@@ -15,8 +15,8 @@ POST http://localhost:3000/api/v1/users/login
 Content-Type: application/json
 
 {
-  "username": "randy",
-  "user_password": "rcwjys"
+  "username": "ewingg",
+  "user_password": "ewing123"
 }
 
 ###

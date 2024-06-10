@@ -11,7 +11,7 @@ import { authenticate } from "../../middleware/authenticateMiddleware.js";
 
 const router = express.Router();
 
-router.post("/api/v1/users/register", tryCatch(authenticate)  ,tryCatch(register));
+router.post("/api/v1/users/register", tryCatch(authenticate) ,tryCatch(register));
 
 router.post("/api/v1/users/login", tryCatch(login));
 

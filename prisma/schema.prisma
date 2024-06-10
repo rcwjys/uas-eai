@@ -17,28 +17,29 @@ model User {
   user_role          Role         @default(students)
   token_created_at   Int?
   token_expired_at   Int?
-  votes              Vote[]       // Changed from Votes to Vote[]
+  votes              Vote[]
   aspirations        Aspiration[]
 }
 
 model Candidate {
-  candidate_id        String  @id @default(uuid())
-  candidate_name      String  @unique @db.VarChar(50)
-  candidate_slug      String? @unique
-  candidate_biography String  @db.Text
-  candidate_vision    String  @db.Text
-  candidate_mission   String  @db.Text
-  votes               Vote[]  // Changed from Votes to Vote[]
+  candidate_id         String  @id @default(uuid())
+  candidate_name       String  @unique @db.VarChar(50)
+  candidate_slug       String? @unique
+  candidate_biography  String  @db.Text
+  candidate_vision     String  @db.Text
+  candidate_mission    String  @db.Text
+  candidate_vote_total Int     @default(0)
+  votes                Vote[]
 }
 
-model Vote {               // Changed from Votes to Vote
-  vote_id      String    @id @default(uuid())
-  created_at   DateTime  @default(now()) @map("created_at")
+model Vote {
+  vote_id      String   @id @default(uuid())
+  created_at   DateTime @default(now()) @map("created_at")
   voter_id     String
   candidate_id String
 
-  voter        User      @relation(fields: [voter_id], references: [user_id], onDelete: Cascade)
-  candidate    Candidate @relation(fields: [candidate_id], references: [candidate_id], onDelete: Cascade)
+  voter     User      @relation(fields: [voter_id], references: [user_id], onDelete: Cascade)
+  candidate Candidate @relation(fields: [candidate_id], references: [candidate_id], onDelete: Cascade)
 
   @@index([voter_id])
   @@index([candidate_id])
@@ -52,19 +53,19 @@ enum Role {
 }
 
 model Aspiration_Address {
-  aspiration_address_id String  @id @default(uuid())
-  aspiration_address    String  @unique
+  aspiration_address_id String       @id @default(uuid())
+  aspiration_address    String       @unique
   aspirations           Aspiration[]
 }
 
 model Aspiration {
-  aspiration_id          String             @id @default(uuid())
-  aspiration_status      Status             @default(pending)
-  aspiration             String             @db.Text
-  user_id                String             
-  user                   User               @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
-  aspiration_address_id  String             
-  aspiration_address     Aspiration_Address @relation(fields: [aspiration_address_id], references: [aspiration_address_id], onDelete: Cascade)
+  aspiration_id         String             @id @default(uuid())
+  aspiration_status     Status             @default(pending)
+  aspiration            String             @db.Text
+  user_id               String
+  user                  User               @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+  aspiration_address_id String
+  aspiration_address    Aspiration_Address @relation(fields: [aspiration_address_id], references: [aspiration_address_id], onDelete: Cascade)
 }
 
 enum Status {

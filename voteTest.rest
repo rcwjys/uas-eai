@@ -7,11 +7,11 @@ GET http://localhost:3000/api/v1/votes/d10114f4-fa01-4ab9-93e5-50e37f226e44
 ###
 POST http://localhost:3000/api/v1/votes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhOTA2MWQ4LTUxOGQtNDk2ZS1iODcxLTRjOGVlYTVlNTdiOSIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NTcwNTUyLCJleHAiOjE3MTc1NzIzNTJ9.X4HMxqMjGh14kcTX9RyX8_jxSIgXTrNWNkTYuGhPIXY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nZyIsInVzZXJfaWQiOiI2NzQwMWUxMS03MjM3LTRjZGUtYTYyYi02NGVlNGY4NmJhNjEiLCJ1c2VyX3JvbGUiOiJzdHVkZW50cyIsImlhdCI6MTcxODAwMzc4MSwiZXhwIjoxNzE4MDA2NDgxfQ._WnlKMjO_iFMtnGWY-sCHKK11Ha--euU_l7IuRpzsKk
 
 {
-  "user_id": "ea9061d8-518d-496e-b871-4c8eea5e57b9",
-  "candidate_id": "9309ba60-0ef5-48e4-829c-22afe17be26c"
+  "user_id": "67401e11-7237-4cde-a62b-64ee4f86ba61",
+  "candidate_id": "5cba782f-317a-4ab3-9cfa-305031a7fe5d"
 
 }
 

@@ -69,6 +69,17 @@ export async function storeVotes(req, res) {
     },
   });
 
+  await prisma.candidate.update({
+    where: {
+      candidate_id
+    },
+    data: {
+      candidate_vote_total: {
+        increment: 1
+      }
+    }
+  });
+
   await channel.assertExchange("votes", "fanout", {
     durable: true,
     autoDelete: false,
@@ -85,7 +96,7 @@ export async function storeVotes(req, res) {
     (data) => {
       const message = JSON.parse(Buffer.from(data.content.toString()));
       console.log(
-        `${message.voter_id} is votes ${message.candidate_id} at ${message.created_at}`
+        `${message.voter_id} is votes ${message.candidate_id} at ${message.created_at}, Total Votes is ${message.candidate_vote_total}`
       );
     },
     {

@@ -6,11 +6,11 @@ GET http://localhost:3000/api/v1/candidates/john-doe
 
 ###
 POST http://localhost:3000/api/v1/candidates
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nIiwidXNlcl9pZCI6ImVhOTA2MWQ4LTUxOGQtNDk2ZS1iODcxLTRjOGVlYTVlNTdiOSIsInVzZXJfcm9sZSI6ImFkbWluIiwiaWF0IjoxNzE3NTA5NjU3LCJleHAiOjE3MTc1MTE0NTd9.gBYRAmYN3jQmIoMzuL96FWM_7tmCScICpyCyc7UDPWo
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImV3aW5nZyIsInVzZXJfaWQiOiI2NzQwMWUxMS03MjM3LTRjZGUtYTYyYi02NGVlNGY4NmJhNjEiLCJ1c2VyX3JvbGUiOiJzdHVkZW50cyIsImlhdCI6MTcxODAwMzc4MSwiZXhwIjoxNzE4MDA2NDgxfQ._WnlKMjO_iFMtnGWY-sCHKK11Ha--euU_l7IuRpzsKk
 Content-Type: application/json
 
 {
-  "candidate_name": "John 2",
+  "candidate_name": "John doe",
   "candidate_biography": "John Doe has a rich background in community service and leadership.",
   "candidate_vision": "To create a more inclusive and prosperous community for all.",
   "candidate_mission": "To implement policies that promote economic growth, education, and social justice."
